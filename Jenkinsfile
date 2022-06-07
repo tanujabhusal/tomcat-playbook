@@ -1,8 +1,8 @@
 pipeline {
      agent {
 	 
-	    lable {
-		     lable "Built-in"
+	    label {
+		     label "Built-in"
 			 
 			 customWorkspace "/mnt/project/"
 		
