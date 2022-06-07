@@ -1,0 +1,32 @@
+--- #tomcat intall and deply war
+- hosts: dev
+  user: ansible
+  connection: ssh
+  become: yes
+
+
+  tasks:
+    - name: java install
+      command: yum install java-1.8.0-openjdk-devel.x86_64 -y
+
+
+    - name: install tomcat
+      command: wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.63/bin/apache-tomcat-9.0.63.zip
+
+    - name: unzip tomcat
+      command: unzip apache-tomcat-9.0.63.zip
+
+    - name: give permission
+      command: chmod -R 777 apache-tomcat-9.0.63
+
+    - name: run startup file
+      command: nohup /home/ansible/apache-tomcat-9.0.63/bin/startup.sh
+
+    - name: deploy war file
+      action: copy src=gameoflife.war dest=/home/ansible/apache-tomcat-9.0.63/webapps
+
+
+
+
+      
+
